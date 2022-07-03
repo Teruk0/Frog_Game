@@ -5,10 +5,10 @@ using UnityEngine;
 public class TestMovement : MonoBehaviour
 {
 
-    float startTimer = 0;
-    float heldDownTime = 0;
+    float startTimer = 0f;
+    float heldDownTime = 0f;
     public Rigidbody rb;
-
+    public float mouseSens = 2000f;
 
     // Start is called before the first frame update
     void Start()
@@ -30,5 +30,9 @@ public class TestMovement : MonoBehaviour
             Debug.Log(heldDownTime);
             rb.AddForce(10 * heldDownTime * rb.transform.forward.x, 5 * heldDownTime, 10 * heldDownTime * rb.transform.forward.z, ForceMode.Impulse);
         }
+
+        transform.Rotate(0, Input.GetAxis("Mouse X") * Time.deltaTime * mouseSens, 0);
+
     }
+
 }
